@@ -50,6 +50,20 @@
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
 
+  <build_depend>gazebo_plugins</build_depend>
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>gazebo_ros_control</build_depend>
+  <build_depend>rrbot_control</build_depend>
+  <build_depend>rrbot_description</build_depend>
+  <build_depend>xacro</build_depend>
+
+  <exec_depend>gazebo_plugins</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>gazebo_ros_control</exec_depend>
+  <exec_depend>multi_legged_control</exec_depend>
+  <exec_depend>multi_legged_description</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

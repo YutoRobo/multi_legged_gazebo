@@ -1,7 +1,8 @@
 <launch>
+  <!--rosparam file="$(find multi_legged_control)/config/gazebo_ros_control_params.yaml" command="load"/-->
 
   <!-- these are the arguments you can pass this launch file, for example paused:=true -->
-  <arg name="paused" default="false"/>
+  <arg name="paused" default="true"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
@@ -23,9 +24,9 @@
 
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-    args="-urdf -model multi_legged -param robot_description"/>
+    args="-urdf -model multi_legged_robot -param robot_description"/>
 
   <!-- ros_control multi_legged launch file -->
-  <!--include file="$(find multi_legged_control)/launch/multi_legged_control.launch" /-->
+  <!-- include file="$(find multi_legged_control)/launch/multi_legged_control.launch" /-->
 
 </launch>
