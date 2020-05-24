@@ -2,6 +2,7 @@
 # coding: utf-8
 import roslaunch
 import rospy
+from std_srvs.srv import Empty
 
 uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
 roslaunch.configure_logging(uuid)
@@ -20,9 +21,14 @@ while not rospy.is_shutdown():
     parent.start()
     rospy.loginfo("started")
 
+    rospy.init_node('reset_world')
+
     while not rospy.is_shutdown():
         rospy.loginfo("loop now")
-        rospy.sleep(1)
+        rospy.sleep(10)
+        rospy.wait_for_service('/gazebo/reset_world')
+        reset_world = rospy.ServiceProxy('/gazebo/reset_world', Empty)
+        reset_world()
 
     parent.shutdown()
     rospy.loginfo("killed")
