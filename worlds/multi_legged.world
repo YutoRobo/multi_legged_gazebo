@@ -2,6 +2,21 @@
 <sdf version="1.4">
 
   <world name="default">
+    <physics type="ode">
+      <ode>
+        <solver>
+          <type>world</type>
+          <friction_model>cone_model</friction_model>
+        </solver>
+        <constraints>
+          <contact_max_correcting_vel>0.1</contact_max_correcting_vel>
+          <contact_surface_layer>0.0001</contact_surface_layer>
+        </constraints>
+        <mu>0.01</mu>
+		 	  <mu2>0.01</mu2>
+      </ode>
+      <max_step_size>0.0005</max_step_size>
+    </physics>
     <include>
       <uri>model://ground_plane</uri>
     </include>

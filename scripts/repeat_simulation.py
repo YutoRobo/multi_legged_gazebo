@@ -13,22 +13,25 @@ cli_args3 = ['multi_legged_walk', 'simple_walk.launch']
 roslaunch_file1 = roslaunch.rlutil.resolve_launch_arguments(cli_args1)[0]
 roslaunch_file2 = roslaunch.rlutil.resolve_launch_arguments(cli_args2)[0]
 roslaunch_file3 = roslaunch.rlutil.resolve_launch_arguments(cli_args3)[0]
-launch_files = [roslaunch_file1, roslaunch_file2, roslaunch_file3]
+launch_files = [roslaunch_file1, roslaunch_file2]
+launch_file_walk = [roslaunch_file3]
 
 while not rospy.is_shutdown():
     parent = roslaunch.parent.ROSLaunchParent(uuid, launch_files)
-
+    walk_parent = roslaunch.parent.ROSLaunchParent(uuid, launch_file_walk)
     parent.start()
+    walk_parent.start()
     rospy.loginfo("started")
-
     rospy.init_node('reset_world')
+    rospy.loginfo("loop now")
+    rospy.sleep(10)
 
     while not rospy.is_shutdown():
         rospy.loginfo("loop now")
-        rospy.sleep(10)
         rospy.wait_for_service('/gazebo/reset_world')
         reset_world = rospy.ServiceProxy('/gazebo/reset_world', Empty)
         reset_world()
+        rospy.sleep(20)
 
     parent.shutdown()
     rospy.loginfo("killed")
