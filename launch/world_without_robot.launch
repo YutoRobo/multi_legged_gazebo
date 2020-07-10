@@ -18,6 +18,8 @@
     <arg name="headless" value="$(arg headless)"/>
   </include>
 
-  <node pkg="multi_legged_tools" name="calc_total_torque_energy" type="calc_total_torque_energy.py"/>
+  <node pkg="multi_legged_tools" name="save_each_torque_data" type="save_each_torque_data.py"/>
+  <node pkg="multi_legged_tools" name="save_each_grf_data" type="save_each_grf_data.py"/>
+  <node pkg="multi_legged_tools" name="save_robot_position" type="save_robot_position.py"/>
 
 </launch>
