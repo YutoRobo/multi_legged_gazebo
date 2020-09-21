@@ -7,6 +7,8 @@
         <solver>
           <type>world</type>
           <friction_model>cone_model</friction_model>
+          <thread_position_correction>1</thread_position_correction>
+          <island_threads>3</island_threads>
         </solver>
         <constraints>
           <contact_max_correcting_vel>0.1</contact_max_correcting_vel>
@@ -16,6 +18,8 @@
 		 	  <mu2>0.01</mu2>
       </ode>
       <max_step_size>0.0005</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>5000</real_time_update_rate>
     </physics>
     <include>
       <uri>model://ground_plane</uri>

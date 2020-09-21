@@ -1,0 +1,7 @@
+<launch>
+  <!--https://answers.gazebosim.org//question/16497/spawning-multiple-robots-each-with-a-controller-in-the-same-namespace-as-the-controller_manager/-->
+  <node name="respawn_single_robot_model1" pkg="multi_legged_gazebo" type="respawn_single_robot_model" 
+    args="robotname robot1
+          y_pose 0.0"/> 
+    
+</launch>
