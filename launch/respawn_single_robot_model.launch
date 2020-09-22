@@ -5,8 +5,6 @@
   <!--https://answers.gazebosim.org//question/16497/spawning-multiple-robots-each-with-a-controller-in-the-same-namespace-as-the-controller_manager/-->
   <group ns="/$(arg robotname)">
     <param name="tf_prefix" value="$(arg robotname)" />
-    <!-- Load joint controller configurations from YAML file to parameter server -->
-    <rosparam file="$(find multi_legged_control)/config/controller.yaml" command="load" ns="/$(arg robotname)" />
     <param name="/$(arg robotname)/robot_description"
     command="$(find xacro)/xacro --inorder '$(find multi_legged_description)/robots/multi_legged_robot.urdf.xacro'" />
 
@@ -14,36 +12,4 @@
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
       args="-y $(arg y_pose) -urdf -model $(arg robotname) -param robot_description"/>
   </group>
-  
-  <group ns="/$(arg robotname)">
-    <param name="tf_prefix" value="$(arg robotname)" />
-    <node name="robot_controller_spawner" pkg="controller_manager" type="spawner" output="screen" respawn="false"
-      args="--namespace=/$(arg robotname)
-            joint_state_controller
-            LF_base_clause_controller
-            LM_base_clause_controller
-            LH_base_clause_controller
-            RF_base_clause_controller
-            RM_base_clause_controller
-            RH_base_clause_controller
-            LF_thigh_controller
-            LM_thigh_controller
-            LH_thigh_controller
-            RF_thigh_controller
-            RM_thigh_controller
-            RH_thigh_controller
-            LF_tibia_controller
-            LM_tibia_controller
-            LH_tibia_controller
-            RF_tibia_controller
-            RM_tibia_controller
-            RH_tibia_controller
-            --shutdown-timeout 10"/>-
-
-    <!-- convert joint states to TF transforms for rviz, etc -->
-    <!-- convert joint states to TF transforms for rviz, etc -->
-    <node name="robot_state_publisher" pkg="robot_state_publisher"
-          type="robot_state_publisher">
-    </node>
-  </group>        
 </launch>
