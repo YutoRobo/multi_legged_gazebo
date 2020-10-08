@@ -17,9 +17,9 @@
         <mu>0.01</mu>
 		 	  <mu2>0.01</mu2>
       </ode>
-      <max_step_size>0.0005</max_step_size>
-      <real_time_factor>1</real_time_factor>
-      <real_time_update_rate>5000</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>0</real_time_factor>
+      <real_time_update_rate>0.0</real_time_update_rate>
     </physics>
     <include>
       <uri>model://ground_plane</uri>

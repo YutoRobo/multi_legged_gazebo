@@ -12,4 +12,8 @@
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
       args="-y $(arg y_pose) -urdf -model $(arg robotname) -param robot_description"/>
   </group>
+
+  <node pkg="multi_legged_tools" name="save_each_torque_data" type="save_each_torque_data.py"/>
+  <node pkg="multi_legged_tools" name="save_each_grf_data" type="save_each_grf_data.py"/>
+  <node pkg="multi_legged_tools" name="save_robot_position" type="save_robot_position.py"/>
 </launch>
