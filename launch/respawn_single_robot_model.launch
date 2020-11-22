@@ -1,6 +1,6 @@
 <launch>
-  <arg name="robotname" default="robot" /> <!--ここに入力引数を記述-->
-  <arg name="y_pose" default="0.0" /> <!--ここに入力引数を記述-->
+  <arg name="robotname" default="robot" /> 
+  <arg name="pose_y" default="0.0" /> 
 
   <!--https://answers.gazebosim.org//question/16497/spawning-multiple-robots-each-with-a-controller-in-the-same-namespace-as-the-controller_manager/-->
   <group ns="/$(arg robotname)">
@@ -10,10 +10,10 @@
 
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-      args="-y $(arg y_pose) -urdf -model $(arg robotname) -param robot_description"/>
+      args="-y $(arg pose_y) -urdf -model $(arg robotname) -param robot_description"/>
   </group>
+  <node pkg="multi_legged_tools" name="save_each_torque_data_$(arg robotname)" type="save_each_torque_data.py" args="$(arg robotname)"/>
+  <node pkg="multi_legged_tools" name="save_each_grf_data_$(arg robotname)" type="save_each_grf_data.py" args="$(arg robotname)"/>
+  <node pkg="multi_legged_tools" name="save_robot_position_$(arg robotname)" type="save_robot_position.py" args="$(arg robotname)"/>
 
-  <node pkg="multi_legged_tools" name="save_each_torque_data" type="save_each_torque_data.py"/>
-  <node pkg="multi_legged_tools" name="save_each_grf_data" type="save_each_grf_data.py"/>
-  <node pkg="multi_legged_tools" name="save_robot_position" type="save_robot_position.py"/>
 </launch>

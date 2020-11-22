@@ -3,12 +3,18 @@
 
   <world name="default">
     <physics type="ode">
+      <scene>
+        <ambient>0.4 0.4 0.4 1</ambient>
+        <background>0.7 0.7 0.7 1</background>
+        <!-- modified (shadows) to reduce computation effort, default : true -->
+        <shadows>false</shadows>
+      </scene>
       <ode>
         <solver>
           <type>world</type>
           <friction_model>cone_model</friction_model>
           <thread_position_correction>1</thread_position_correction>
-          <island_threads>3</island_threads>
+          <island_threads>4</island_threads>
         </solver>
         <constraints>
           <contact_max_correcting_vel>0.1</contact_max_correcting_vel>
@@ -20,6 +26,7 @@
       <max_step_size>0.001</max_step_size>
       <real_time_factor>0</real_time_factor>
       <real_time_update_rate>0.0</real_time_update_rate>
+      <!--<gravity>-4.9 0 -8.487</gravity>-->
     </physics>
     <include>
       <uri>model://ground_plane</uri>
